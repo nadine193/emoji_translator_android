@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Emoji Translator</string>
+    <string name="emoji_translator">Emoji Translator</string>
+    <string name="input_label_text">Emoji</string>
+    <string name="output_label_text">Description</string>
+    <string name="translate_button">Translate</string>
+</resources>
