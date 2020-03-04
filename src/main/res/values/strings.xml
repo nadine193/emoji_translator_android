@@ -4,4 +4,6 @@
     <string name="input_label_text">Emoji</string>
     <string name="output_label_text">Description</string>
     <string name="translate_button">Translate</string>
+    <string name="settings_button">Settings</string>
+
 </resources>

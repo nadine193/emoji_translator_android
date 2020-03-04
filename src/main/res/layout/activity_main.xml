@@ -6,65 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginLeft="136dp"
-        android:layout_marginTop="100dp"
-        android:text="@string/translate_button"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outputTextField" />
-
-    <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/outlinedTextField"
-    style="@style/InputLayoutStyle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="44dp"
-    android:layout_marginLeft="44dp"
-    android:layout_marginTop="80dp"
-    android:layout_marginEnd="44dp"
-    android:layout_marginRight="44dp"
-    android:hint="@string/input_label_text"
-    app:errorEnabled="true"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/input"
-        android:layout_width="match_parent"
-        android:layout_height="130dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outputTextField"
-        style="@style/OutputLayoutStyle"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/ToolbarStyle"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/emoji_translator">
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputTextField"
+        style="@style/InputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="128dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
-        android:hint="@string/output_label_text"
+        android:hint="@string/input_label_text"
+        app:hintTextColor="@color/primaryTextColor"
         app:errorEnabled="true"
+        app:boxBackgroundColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/output"
             android:layout_width="match_parent"
-            android:layout_height="130dp" />
+            android:layout_height="130dp"
+            android:textColor="#000000"
+            android:hint="@string/input_label_text"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outputTextField"
+        style="@style/InputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:hint="@string/output_label_text"
+        app:hintTextColor="@color/primaryTextColor"
+        app:errorEnabled="true"
+        app:boxBackgroundColor="@color/primaryTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:textColor="#000000"
+            android:hint="@string/output_label_text"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/containedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="149dp"
+        android:layout_marginLeft="149dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/translate_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outputTextField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
