@@ -45,9 +45,21 @@
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:textColor="#000000"
-            android:hint="@string/input_label_text"/>
+            android:hint="@string/input_label_text" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/switch_button"
+        android:layout_width="86dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_swap_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputTextField"
+        android:contentDescription="@string/switch_button" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outputTextField"
@@ -56,13 +68,13 @@
         android:layout_height="130dp"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="380dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:hint="@string/output_label_text"
-        app:hintTextColor="@color/primaryTextColor"
+        app:boxBackgroundColor="#FFFFFF"
         app:errorEnabled="true"
-        app:boxBackgroundColor="@color/primaryTextColor"
+        app:hintTextColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -71,17 +83,19 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="130dp"
+            android:background="#FFFFFF"
+            android:hint="@string/output_label_text"
             android:textColor="#000000"
-            android:hint="@string/output_label_text"/>
+            android:inputType="none"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/containedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="149dp"
-        android:layout_marginLeft="149dp"
+        android:layout_width="159dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginLeft="124dp"
         android:layout_marginTop="60dp"
         android:text="@string/translate_button"
         app:layout_constraintStart_toStartOf="parent"

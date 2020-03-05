@@ -1,10 +1,13 @@
 package com.example.emojitranslator;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.provider.FontRequest;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -16,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private TextInputLayout inputField;
     private TextInputLayout outputField;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         inputField = findViewById(R.id.inputTextField);
         outputField = findViewById(R.id.outputTextField);
+
     }
 
     @Override
