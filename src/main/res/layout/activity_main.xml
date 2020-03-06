@@ -91,7 +91,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/containedButton"
+        android:id="@+id/translateButton"
         android:layout_width="159dp"
         android:layout_height="79dp"
         android:layout_marginStart="124dp"
