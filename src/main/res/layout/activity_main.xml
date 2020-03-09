@@ -49,7 +49,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageButton
+    <ToggleButton
         android:id="@+id/switch_button"
         android:layout_width="86dp"
         android:layout_height="82dp"
@@ -58,37 +58,63 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/ic_swap_white"
         android:contentDescription="@string/switch_button"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputTextField" />
 
-    <EditText
-        android:id="@+id/outputTextField"
-        style="@style/OutputLayoutStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="318dp"
+        android:layout_height="130dp"
+
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="380dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:hint="@string/output_label_text"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/switch_button">
 
-    </EditText>
+        <EditText
+            android:id="@+id/outputTextField"
+            style="@style/OutputLayoutStyle"
+            android:layout_width="318dp"
+            android:layout_height="130dp"
+            android:background="#ffffff"
+            android:hint="@string/output_label_text"
+            android:textColor="#000000"
+            android:textColorHint="@color/primaryTextColor"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ttsButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@+id/outputTextField"
+            android:layout_alignRight="@+id/outputTextField"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="65dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:visibility="visible"
+            android:src="@drawable/ic_tts_2"
+            android:contentDescription="@string/textToSpeech"/>
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/translateButton"
         android:layout_width="159dp"
         android:layout_height="79dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="126dp"
+        android:layout_marginLeft="126dp"
+        android:layout_marginTop="39dp"
         android:text="@string/translate_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outputTextField" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

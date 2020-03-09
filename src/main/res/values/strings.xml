@@ -6,5 +6,7 @@
     <string name="translate_button">Translate</string>
     <string name="settings_button">Settings</string>
     <string name="switch_button">Swap</string>
+    <string name="textToSpeech">Read aloud</string>
+
 
 </resources>
