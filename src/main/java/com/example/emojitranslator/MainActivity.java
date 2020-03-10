@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView ttsButton;
     private ImageView sttButton;
     private ListView listView;
+    private EditText outputHeading;
+    private EditText inputHeading;
     TextToSpeech t1;
     private List<String> result;
 
@@ -66,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
         translateButton = findViewById(R.id.translateButton);
         ttsButton = findViewById(R.id.ttsButton);
         sttButton = findViewById(R.id.sttButton);
+        inputHeading = findViewById(R.id.inputHeading);
+        inputHeading.setText("Emoji");
+        outputHeading = findViewById(R.id.outputHeading);
+        outputHeading.setText("Description");
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -106,11 +112,11 @@ public class MainActivity extends AppCompatActivity {
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    inputField.setHint("Description");
-                    outputField.setHint("Emoji");
+                    inputHeading.setText("Description");
+                    outputHeading.setText("Emoji");
                 } else {
-                    inputField.setHint("Emoji");
-                    outputField.setHint("Description");
+                    inputHeading.setText("Emoji");
+                    outputHeading.setText("Description");
                 }
             }
         });
