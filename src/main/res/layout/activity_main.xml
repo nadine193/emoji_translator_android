@@ -49,6 +49,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <ToggleButton
         android:id="@+id/switch_button"
         android:layout_width="86dp"
@@ -58,7 +59,6 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/ic_swap_white"
         android:contentDescription="@string/switch_button"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputTextField" />
 
@@ -97,11 +97,12 @@
             android:layout_alignRight="@+id/outputTextField"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="65dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="-1dp"
+            android:layout_marginRight="-1dp"
             android:layout_marginBottom="15dp"
-            android:visibility="visible"
+            android:contentDescription="@string/textToSpeech"
             android:src="@drawable/ic_tts_2"
-            android:contentDescription="@string/textToSpeech"/>
+            android:visibility="visible" />
 
     </RelativeLayout>
 
@@ -113,8 +114,23 @@
         android:layout_marginLeft="126dp"
         android:layout_marginTop="39dp"
         android:text="@string/translate_button"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+    <ImageView
+        android:id="@+id/sttButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@+id/inputTextField"
+        android:layout_alignRight="@+id/inputTextField"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="114dp"
+        android:contentDescription="@string/textToSpeech"
+        android:src="@drawable/ic_stt"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/inputTextField"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
