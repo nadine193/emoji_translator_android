@@ -32,6 +32,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -153,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        emojiList = (ListView) findViewById(R.id.emojiList);
+        // emojiList = (ListView) findViewById(R.id.emojiList);
 
     }
     @Override
@@ -173,12 +174,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private class DescriptionTask extends AsyncTask<String, Void, List<String>> {
-        String error;
-        List<String> result;
+    private class DescriptionTask extends AsyncTask<String, Void, String> {
+        String result;
+
 
         @Override
-        protected List<String> doInBackground(String... urls) {
+        protected String doInBackground(String... urls) {
             URL url;
             try {
                 url = new URL(urls[0]);
@@ -190,21 +191,16 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 bufferedReader.close();
-                // split string into an array
-                String[] stringElements = string.split(",");
-                // add array to temporary list
-                result = Arrays.asList(stringElements);
-
+                result = string;
             } catch (IOException e){
                 e.printStackTrace();
-                error = e.toString();
+                result = e.toString();
             }
             return result;
         }
         @Override
-        protected void onPostExecute(List<String> result) {
-        // send result(list) to listview
-            outputField.setText(StringEscapeUtils.unescapeJava(String.valueOf(result)));
+        protected void onPostExecute(String result) {
+            outputField.setText(StringEscapeUtils.unescapeJava(result));
         }
     }
     private class TagTask extends AsyncTask<String, Void, List<String>> {
