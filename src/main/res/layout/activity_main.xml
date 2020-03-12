@@ -19,7 +19,24 @@
             android:layout_height="?attr/actionBarSize"
             app:title="@string/emoji_translator">
 
+
+                <ImageButton
+                    android:id="@+id/settingsButton"
+                    android:enabled="true"
+                    android:icon="@drawable/settings"
+                    android:orderInCategory="2"
+                    android:title="@string/emoji_translator"
+                    android:visible="true"
+                    app:showAsAction="always"
+                    android:layout_height="50dp"
+                    android:layout_width="50dp"
+                    android:contentDescription="@string/settings_button"
+                    android:layout_gravity="right"
+                    />
+
+
         </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -152,5 +169,13 @@
         android:textColor="#ffffff"
         />
 
+    <ListView
+        android:id="@+id/emojiList"
+        android:layout_width="318dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/translateButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.emojitranslator;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -9,9 +10,11 @@ import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -31,6 +34,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -44,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
     private ToggleButton switchButton;
     private ImageView ttsButton;
     private ImageView sttButton;
-    private ListView listView;
+    private ListView emojiList;
     private EditText outputHeading;
     private EditText inputHeading;
     TextToSpeech t1;
     private List<String> result;
-
+    private ImageButton settingsButton;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -57,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
 
         AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_YES);
+        AppCompatDelegate.MODE_NIGHT_YES);
 
         inputField = findViewById(R.id.inputTextField);
         outputField = findViewById(R.id.outputTextField);
@@ -72,6 +77,16 @@ public class MainActivity extends AppCompatActivity {
         inputHeading.setText("Emoji");
         outputHeading = findViewById(R.id.outputHeading);
         outputHeading.setText("Description");
+        settingsButton = findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+
+                // start the activity connect to the specified class
+                startActivity(intent);
+            }
+        });
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -137,37 +152,37 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /* ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.activity_main, result);
+        emojiList.setAdapter(adapter);
+
+        ListView emojiList = (ListView) findViewById(R.id.emojiList); */
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case REQ_CODE: {
-                if (resultCode == RESULT_OK && null != data) {
-                    ArrayList<String> result = data
-                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    String words = result.get(0);
-                    String url = "http://10.0.2.2:8080/getTagMatches?tags=" + words;
-                    new MyTask().execute(url);
-                }
-                break;
+        if (requestCode == REQ_CODE) {
+            if (resultCode == RESULT_OK && null != data) {
+                ArrayList<String> result = data
+                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                String words = result.get(0);
+                String url = "http://10.0.2.2:8080/getTagMatches?tags=" + words;
+                new MyTask().execute(url);
             }
         }
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    private class MyTask extends AsyncTask<String, Void, String> {
-        String result;
+    private class MyTask extends AsyncTask<String, Void, List<String>> {
+        String error;
+        List<String> result;
 
         @Override
-        protected String doInBackground(String... urls) {
+        protected List<String> doInBackground(String... urls) {
             URL url;
             try {
                 url = new URL(urls[0]);
@@ -176,19 +191,28 @@ public class MainActivity extends AppCompatActivity {
                 String string = "";
                 while ((stringBuffer = bufferedReader.readLine()) != null){
                     string = String.format("%s%s", string, stringBuffer);
+
                 }
                 bufferedReader.close();
-                result = string;
+                // split string into an array
+                String[] stringElements = string.split(",");
+                // add array to temporary list
+                result = Arrays.asList(stringElements);
+
             } catch (IOException e){
                 e.printStackTrace();
-                result = e.toString();
+                error = e.toString();
             }
             return result;
         }
         @Override
-        protected void onPostExecute(String result) {
-            outputField.setText(StringEscapeUtils.unescapeJava(result));
+        protected void onPostExecute(List<String> result) {
+        // send result(list) to listview
+            outputField.setText(StringEscapeUtils.unescapeJava(String.valueOf(result)));
+
+
         }
     }
-
 }
+
+

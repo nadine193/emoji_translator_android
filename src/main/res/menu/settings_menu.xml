@@ -4,9 +4,11 @@
 
     <item
         android:enabled="true"
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/ic_back"
         android:orderInCategory="2"
-        android:title="@string/settings_button"
+        android:title="@string/emoji_translator"
         android:visible="true"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        />
+
 </menu>
