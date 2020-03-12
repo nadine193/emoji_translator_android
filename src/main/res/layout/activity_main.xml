@@ -6,38 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ToolbarStyle"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/appBarLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:theme="@style/ToolbarStyle"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/main_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/emoji_translator">
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/main_toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            app:title="@string/emoji_translator">-->
+
+<!--&lt;!&ndash;                <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/settingsButton"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:enabled="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:icon="@drawable/settings"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:orderInCategory="2"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:title="@string/emoji_translator"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:visible="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                    app:showAsAction="always"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="50dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="50dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:contentDescription="@string/settings_button"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_gravity="end"&ndash;&gt;-->
+<!--&lt;!&ndash;                    />&ndash;&gt;-->
 
 
-                <ImageButton
-                    android:id="@+id/settingsButton"
-                    android:enabled="true"
-                    android:icon="@drawable/settings"
-                    android:orderInCategory="2"
-                    android:title="@string/emoji_translator"
-                    android:visible="true"
-                    app:showAsAction="always"
-                    android:layout_height="50dp"
-                    android:layout_width="50dp"
-                    android:contentDescription="@string/settings_button"
-                    android:layout_gravity="right"
-                    />
+<!--        </androidx.appcompat.widget.Toolbar>-->
 
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputTextField"
@@ -127,12 +126,12 @@
         android:layout_alignEnd="@+id/inputTextField"
         android:layout_alignRight="@+id/inputTextField"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="114dp"
+        android:layout_marginTop="162dp"
         android:contentDescription="@string/textToSpeech"
         android:src="@drawable/ic_stt"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/inputTextField"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ttsButton"
