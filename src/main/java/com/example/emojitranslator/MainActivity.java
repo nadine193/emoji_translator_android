@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     String input = inputField.getEditText().getText().toString();
                     String url = "http://10.0.2.2:8080/getTagMatches?tags=" + input;
+                    outputField.setVisibility(View.GONE);
+                    emojiList.setVisibility(View.VISIBLE);
                     new TagTask().execute(url);
 
                 }
@@ -154,7 +156,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // emojiList = (ListView) findViewById(R.id.emojiList);
+        emojiList = (ListView) findViewById(R.id.emojiList);
+        emojiList.setVisibility(View.GONE);
 
     }
     @Override
@@ -221,8 +224,16 @@ public class MainActivity extends AppCompatActivity {
                 bufferedReader.close();
                 // split string into an array
                 String[] stringElements = string.split(",");
+
+
                 // add array to temporary list
-                result = Arrays.asList(stringElements);
+                result = new ArrayList<>();
+                for(String s : stringElements) {
+                    String emojiString = s.replaceAll("\"", "")
+                            .replaceAll("\\[","")
+                            .replaceAll("\\]","");
+                    result.add(StringEscapeUtils.unescapeJava(emojiString));
+                }
 
             } catch (IOException e){
                 e.printStackTrace();
