@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -42,7 +43,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private final int REQ_CODE = 100;
-    // private Toolbar mToolbar;
+    private Toolbar mToolbar;
     private TextInputLayout inputField;
     private EditText outputField;
     private Button translateButton;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputHeading;
     TextToSpeech t1;
     private List<String> result;
-    // private ImageButton settingsButton;
+    private ImageButton settingsButton;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -63,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        // mToolbar = findViewById(R.id.main_toolbar);
-        // setSupportActionBar(mToolbar);
+        mToolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(mToolbar);
 
         AppCompatDelegate.setDefaultNightMode(
         AppCompatDelegate.MODE_NIGHT_YES);
@@ -78,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         inputHeading.setText("Emoji");
         outputHeading = findViewById(R.id.outputHeading);
         outputHeading.setText("Description");
-        // settingsButton = findViewById(R.id.settingsButton);
-        /* settingsButton.setOnClickListener(new View.OnClickListener() {
+        settingsButton = findViewById(R.id.settingsButton);
+        /*settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -117,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     String input = inputField.getEditText().getText().toString();
                     String url = "http://10.0.2.2:8080/getTagMatches?tags=" + input;
-                    outputField.setVisibility(View.GONE);
-                    emojiList.setVisibility(View.VISIBLE);
                     new TagTask().execute(url);
 
                 }
@@ -132,9 +131,14 @@ public class MainActivity extends AppCompatActivity {
                 if (isChecked) {
                     inputHeading.setText("Description");
                     outputHeading.setText("Emoji");
+                    outputField.setVisibility(View.GONE);
+                    outputField.setHeight(0);
+                    emojiList.setVisibility(View.VISIBLE);
                 } else {
                     inputHeading.setText("Emoji");
                     outputHeading.setText("Description");
+                    outputField.setVisibility(View.VISIBLE);
+                    emojiList.setVisibility(View.GONE);
                 }
             }
         });
@@ -159,6 +163,26 @@ public class MainActivity extends AppCompatActivity {
         emojiList = (ListView) findViewById(R.id.emojiList);
         emojiList.setVisibility(View.GONE);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //inflate the menu. This adds items to the action bar, if it is present
+        getMenuInflater().inflate(R.menu.main_toolbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        int id = menuItem.getItemId();
+
+        switch (id) {
+            case R.id.settingsButton:
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

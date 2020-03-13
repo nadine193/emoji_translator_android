@@ -22,28 +22,13 @@
             android:layout_height="?attr/actionBarSize"
             app:title="@string/emoji_translator">
 
-<!--&lt;!&ndash;                <ImageButton&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:id="@+id/settingsButton"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:enabled="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:icon="@drawable/settings"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:orderInCategory="2"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:title="@string/emoji_translator"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:visible="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                    app:showAsAction="always"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_height="50dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_width="50dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:contentDescription="@string/settings_button"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_gravity="end"&ndash;&gt;-->
-<!--&lt;!&ndash;                    />&ndash;&gt;-->
-
-
-    </androidx.appcompat.widget.Toolbar>
+       </androidx.appcompat.widget.Toolbar>
 
 </com.google.android.material.appbar.AppBarLayout>
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="220dp"
     android:id="@+id/inputLayout"
     app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
@@ -51,14 +36,13 @@
         android:id="@+id/inputTextField"
         style="@style/InputLayoutStyle"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="160dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
-        android:hint="@string/input_label_text"
         app:boxBackgroundColor="@color/primaryTextColor"
         app:errorEnabled="true"
         app:hintTextColor="@color/primaryTextColor"
@@ -68,7 +52,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="160dp"
             android:textColor="#000000"
             android:textSize="30sp" />
 
@@ -76,15 +60,15 @@
 
     <ImageView
         android:id="@+id/sttButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_alignEnd="@+id/inputTextField"
         android:layout_alignRight="@+id/inputTextField"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="-47dp"
         android:layout_marginRight="-47dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="70dp"
         android:contentDescription="@string/textToSpeech"
         android:src="@drawable/ic_stt"
         android:visibility="visible"
@@ -93,55 +77,59 @@
 
     <EditText
             android:id="@+id/inputHeading"
-            android:layout_width="100dp"
+            android:layout_width="160dp"
             android:layout_height="50dp"
             android:layout_marginStart="44dp"
             android:layout_marginLeft="44dp"
             android:background="@android:color/transparent"
+            android:textSize="30dp"
             app:layout_constraintBottom_toTopOf="@+id/inputTextField"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="#ffffff"
         />
 </RelativeLayout>
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/toggleLayout"
-    app:layout_constraintTop_toBottomOf="@id/inputLayout">
 
-    <ToggleButton
-        android:id="@+id/switch_button"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="170dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/ic_swap_white"
-        android:contentDescription="@string/switch_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
+    <RelativeLayout
+        android:id="@+id/toggleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/inputLayout"
+        tools:layout_editor_absoluteX="0dp">
 
-</RelativeLayout>
+        <ToggleButton
+            android:id="@+id/switch_button"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="170dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/ic_swap_white"
+            android:contentDescription="@string/switch_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/outputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@id/toggleLayout">
+        android:layout_width="409dp"
+        android:layout_height="220dp"
+        app:layout_constraintTop_toBottomOf="@id/toggleLayout"
+        tools:layout_editor_absoluteX="0dp">
 
         <EditText
             android:id="@+id/outputTextField"
             style="@style/OutputLayoutStyle"
             android:layout_width="318dp"
-            android:layout_height="130dp"
+            android:layout_height="160dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="44dp"
             android:layout_marginLeft="44dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="44dp"
             android:background="#ffffff"
             android:hint="@string/output_label_text"
             android:textColor="#000000"
@@ -157,39 +145,51 @@
             android:id="@+id/ttsButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_alignEnd="@+id/outputTextField"
+            android:layout_alignRight="@+id/emojiList"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="-49dp"
+            android:layout_marginRight="-49dp"
+            android:layout_marginBottom="36dp"
             android:contentDescription="@string/textToSpeech"
             android:src="@drawable/ic_tts"
-            android:visibility="visible"
-            android:layout_alignEnd="@+id/outputTextField"
-            android:layout_alignRight="@+id/outputTextField"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="-47dp"
-            android:layout_marginRight="-47dp"
-            android:layout_marginBottom="36dp"/>
+            android:visibility="visible" />
 
         <EditText
             android:id="@+id/outputHeading"
-            android:layout_width="100dp"
+            android:layout_width="160dp"
             android:layout_height="50dp"
             android:layout_marginStart="44dp"
             android:layout_marginLeft="44dp"
-            android:layout_marginBottom="20dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/output_label_text"
             android:textColor="#ffffff"
-            app:layout_constraintBottom_toTopOf="@+id/outputTextField"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="27dp" />
 
+        <ListView
+            android:id="@+id/emojiList"
+            android:layout_width="fill_parent"
+            android:layout_height="160dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginLeft="44dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginRight="44dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:divider="#FFCC00"
+            android:dividerHeight="2dp" />
 
     </RelativeLayout>
-
 
     <RelativeLayout
         android:id="@+id/translateLayout"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@id/list">
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@id/outputLayout"
+        tools:layout_editor_absoluteX="0dp">
 
         <Button
             android:id="@+id/translateButton"
@@ -200,33 +200,13 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="116dp"
             android:layout_marginLeft="116dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="0dp"
             android:backgroundTint="@color/colorPrimary"
             android:text="@string/translate_button"
+            android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/list"
-        app:layout_constraintTop_toBottomOf="@id/outputLayout">
 
-        <ListView
-            android:id="@+id/emojiList"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginLeft="44dp"
-            android:layout_marginRight="44dp"
-            android:layout_marginEnd="44dp"
-            android:background="#ffffff"
-            android:divider="#FFCC00"
-            android:dividerHeight="2dp"
-        />
-
-    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
